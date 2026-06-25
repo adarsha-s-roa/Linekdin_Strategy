@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Growth Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f6fa;--white:#fff;--text:#1a1d2e;--muted:#6b7280;--muted2:#9ca3af;
+  --border:#e2e6f0;--surface:#f0f2f8;
+  --blue:#2563eb;--blue-light:#eff6ff;--blue-border:#bfdbfe;
+  --teal:#0d9488;--teal-light:#f0fdfa;--teal-border:#99f6e4;
+  --green:#16a34a;--green-light:#f0fdf4;--green-border:#bbf7d0;
+  --orange:#ea580c;--orange-light:#fff7ed;--orange-border:#fed7aa;
+  --radius:10px;--radius-sm:6px;
+  --shadow:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.04);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+
+.header{background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 60%,#0d9488 100%);color:#fff;padding:52px 48px 44px}
+.header-eyebrow{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.65;margin-bottom:14px}
+.header-title{font-size:34px;font-weight:700;line-height:1.2;margin-bottom:12px}
+.header-sub{font-size:15px;opacity:.82;max-width:520px;line-height:1.65}
+.header-meta{display:flex;gap:32px;margin-top:32px;flex-wrap:wrap}
+.meta-item{display:flex;flex-direction:column;gap:4px}
+.meta-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.6}
+.meta-value{font-size:16px;font-weight:700}
+
+.body{max-width:900px;margin:0 auto;padding:48px 40px}
+
+/* Section */
+.section{margin-bottom:52px}
+.section-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.section-title{font-size:20px;font-weight:700;margin-bottom:8px}
+.section-desc{font-size:14px;color:var(--muted);max-width:600px;line-height:1.7;margin-bottom:24px}
+
+/* Outcome stats */
+.outcomes{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:0}
+.outcome{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);text-align:center}
+.outcome-val{font-size:30px;font-weight:700;color:var(--blue);line-height:1;margin-bottom:6px}
+.outcome-label{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* Phase timeline */
+.phases{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.phase{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.phase::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.ph1::before{background:var(--blue)}
+.ph2::before{background:var(--teal)}
+.ph3::before{background:var(--orange)}
+.phase-month{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted2);margin-bottom:6px}
+.phase-name{font-size:15px;font-weight:700;margin-bottom:12px}
+.phase-items{list-style:none;display:flex;flex-direction:column;gap:8px}
+.phase-items li{font-size:13px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative}
+.phase-items li::before{content:'·';position:absolute;left:0;color:var(--blue);font-weight:700;font-size:16px;line-height:1.3}
+
+/* Deliverable list */
+.deliverables{display:grid;gap:10px}
+.d-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:16px;box-shadow:var(--shadow)}
+.d-icon{font-size:22px;flex-shrink:0}
+.d-text{}
+.d-title{font-size:13px;font-weight:600;margin-bottom:2px}
+.d-desc{font-size:12px;color:var(--muted);line-height:1.55}
+.d-pill{margin-left:auto;font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-border);padding:4px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+
+/* Honest advice box */
+.honest{background:var(--white);border:1px solid var(--blue-border);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow)}
+.honest-top{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.honest-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.honest-heading{font-size:15px;font-weight:700;margin-bottom:4px}
+.honest-sub{font-size:12px;color:var(--muted)}
+.honest-body{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:18px}
+.honest-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hcol{border-radius:var(--radius-sm);padding:14px 16px}
+.hcol-no{background:#fef2f2;border:1px solid #fecaca}
+.hcol-yes{background:var(--green-light);border:1px solid var(--green-border)}
+.hcol-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.hcol-no .hcol-label{color:#dc2626}
+.hcol-yes .hcol-label{color:var(--green)}
+.hcol ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.hcol ul li{font-size:12px;color:var(--text);display:flex;gap:8px;line-height:1.45}
+.hcol-no ul li::before{content:'✗';color:#dc2626;font-weight:700;flex-shrink:0}
+.hcol-yes ul li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+
+/* How we work */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.work-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;box-shadow:var(--shadow)}
+.work-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted2);margin-bottom:4px}
+.work-val{font-size:13px;color:var(--text);font-weight:500}
+
+/* Divider */
+.divider{border:none;border-top:1px solid var(--border);margin:0 0 52px}
+
+.footer{background:var(--white);border-top:1px solid var(--border);padding:24px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-l{font-size:13px;color:var(--muted)}
+.footer-r{font-size:12px;color:var(--muted2)}
+
+/* Plan picker */
+.plan-toggle{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.plan-btn{padding:10px 22px;border-radius:8px;border:2px solid var(--border);background:var(--white);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .18s}
+.plan-btn:hover{border-color:var(--blue);color:var(--blue)}
+.plan-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.plan-card{border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-md)}
+.plan-starter-card{background:var(--white);border:2px solid var(--amber-border)}
+.plan-growth-card{background:var(--white);border:2px solid var(--blue-border)}
+.plan-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.plan-name{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted2);margin-bottom:4px}
+.plan-price{font-size:22px;font-weight:700;color:var(--text)}
+.plan-price span{font-size:13px;font-weight:400;color:var(--muted)}
+.plan-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.plan-tag-amber{background:var(--amber-light);color:var(--amber);border:1px solid var(--amber-border)}
+.plan-tag-blue{background:var(--blue-light);color:var(--blue);border:1px solid var(--blue-border)}
+.plan-note{font-size:12px;line-height:1.6;padding:10px 14px;border-radius:var(--radius-sm);background:var(--amber-light);border:1px solid var(--amber-border);color:#92400e;margin-bottom:18px}
+.plan-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:18px}
+.pstat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;text-align:center}
+.pstat-val{font-size:18px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.pstat-lbl{font-size:11px;color:var(--muted);line-height:1.4}
+.plan-items{display:flex;flex-direction:column;gap:8px}
+.pi{font-size:13px;color:var(--text);display:flex;gap:10px;line-height:1.5;padding:8px 12px;border-radius:var(--radius-sm)}
+.pi-yes{background:var(--green-light);border:1px solid var(--green-border)}
+.pi-yes::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.pi-no{background:#fef2f2;border:1px solid #fecaca}
+.pi-no::before{content:'✗';color:#dc2626;font-weight:700;flex-shrink:0}
+
+@media(max-width:720px){
+  .header{padding:36px 24px 32px}.header-title{font-size:26px}
+  .body{padding:32px 20px}.phases{grid-template-columns:1fr}
+  .honest-cols{grid-template-columns:1fr}.work-grid{grid-template-columns:1fr}
+  .d-item{flex-wrap:wrap}.d-pill{margin-left:0}
+  .footer{padding:20px 24px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-eyebrow">Prepared by Adarsha.S</div>
+  <div class="header-title">90-Day LinkedIn Strategy<br>for CEO &amp; Company Page</div>
+  <div class="header-sub">Building your personal brand and generating qualified inbound leads through a structured organic and paid LinkedIn approach over 13 weeks.</div>
+  <div class="header-meta">
+    <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-value">90 Days</div></div>
+    <div class="meta-item"><div class="meta-label">Profiles</div><div class="meta-value">CEO + Company Page</div></div>
+    <div class="meta-item"><div class="meta-label">Monthly Ad Budget</div><div class="meta-value">₹6,000 – ₹20,000</div></div>
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- OUTCOMES -->
+  <div class="section">
+    <div class="section-label">What to expect</div>
+    <div class="section-title">Results across 90 days</div>
+    <div class="section-desc">These are realistic targets based on the strategy — not best-case estimates. Results compound month on month as the audience grows and ads get optimised.</div>
+    <div class="outcomes">
+      <div class="outcome"><div class="outcome-val">Month 1</div><div class="outcome-label">Organic content + 1 test ad — no wasted spend before the audience is ready</div></div>
+      <div class="outcome"><div class="outcome-val">8–15</div><div class="outcome-label">Qualified leads per month from Month 2 ads onwards</div></div>
+      <div class="outcome"><div class="outcome-val">35+</div><div class="outcome-label">Pieces of content published across 90 days</div></div>
+      <div class="outcome"><div class="outcome-val">2+</div><div class="outcome-label">Target clients closed by end of Month 3</div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASES -->
+  <div class="section">
+    <div class="section-label">The plan</div>
+    <div class="section-title">Three phases, one direction</div>
+    <div class="section-desc">Each month has a clear focus. No guesswork — every week is intentional, and results from each phase feed directly into the next.</div>
+    <div class="phases">
+      <div class="phase ph1">
+        <div class="phase-month">Month 1</div>
+        <div class="phase-name">Foundation &amp; Launch</div>
+        <ul class="phase-items">
+          <li>Optimize CEO profile and company page before anything goes live</li>
+          <li>Establish your voice and point of view with the audience</li>
+          <li>Launch first paid campaign — free audit offer</li>
+          <li>Target: first 3–5 leads, one booked call</li>
+        </ul>
+      </div>
+      <div class="phase ph2">
+        <div class="phase-month">Month 2</div>
+        <div class="phase-name">Build &amp; Convert</div>
+        <ul class="phase-items">
+          <li>Deepen authority with real results and client proof</li>
+          <li>Retarget warm leads who showed interest but didn't act</li>
+          <li>Social proof ad using first client result</li>
+          <li>Target: 5–8 leads/month, 2–3 booked calls</li>
+        </ul>
+      </div>
+      <div class="phase ph3">
+        <div class="phase-month">Month 3</div>
+        <div class="phase-name">Scale &amp; Close</div>
+        <ul class="phase-items">
+          <li>Scale the best-performing ad with full remaining budget</li>
+          <li>Expand reach to international decision-makers</li>
+          <li>Build an owned email list alongside LinkedIn</li>
+          <li>Target: 2+ clients closed, Month 4 plan ready</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- DELIVERABLES -->
+  <div class="section">
+    <div class="section-label">Deliverables</div>
+    <div class="section-title">What's included</div>
+    <div class="section-desc">Everything needed to execute — from profile setup to weekly reporting. Nothing is left for you to manage day-to-day.</div>
+    <div class="deliverables">
+      <div class="d-item">
+        <div class="d-icon">⚡</div>
+        <div class="d-text">
+          <div class="d-title">CEO Profile &amp; Company Page Optimization</div>
+          <div class="d-desc">Full setup before the first post — so every piece of content sends people to a profile that converts visitors into leads.</div>
+        </div>
+        <div class="d-pill">One-time</div>
+      </div>
+      <div class="d-item">
+        <div class="d-icon">✍️</div>
+        <div class="d-text">
+          <div class="d-title">LinkedIn Content — CEO Personal Page</div>
+          <div class="d-desc">All posts planned, written, and shared for your approval before publishing. Covers authority building, education, and engagement content.</div>
+        </div>
+        <div class="d-pill">35+ posts</div>
+      </div>
+      <div class="d-item">
+        <div class="d-icon">🎯</div>
+        <div class="d-text">
+          <div class="d-title">Paid Ad Campaigns — Setup &amp; Management</div>
+          <div class="d-desc">6 campaigns across 3 months, fully managed. Each campaign is optimised weekly based on real performance data — not set and forgotten.</div>
+        </div>
+        <div class="d-pill">6 campaigns</div>
+      </div>
+      <div class="d-item">
+        <div class="d-icon">📋</div>
+        <div class="d-text">
+          <div class="d-title">Free Downloadable Guide — Email List Building</div>
+          <div class="d-desc">In Month 3, a free guide (e.g. "10 digital marketing mistakes costing Indian businesses leads") is promoted via a LinkedIn ad. People download it and leave their email — giving you a direct contact list you own permanently, independent of LinkedIn.</div>
+        </div>
+        <div class="d-pill">Month 3</div>
+      </div>
+      <div class="d-item">
+        <div class="d-icon">📊</div>
+        <div class="d-text">
+          <div class="d-title">Weekly Performance Reports + Monthly Review</div>
+          <div class="d-desc">Clear weekly numbers — leads generated, cost per lead, calls booked. Monthly review covers what's working, what's changing, and why.</div>
+        </div>
+        <div class="d-pill">Every week</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- HONEST ADVICE -->
+  <div class="section">
+    <div class="section-label">Honest advice</div>
+    <div class="section-title">Should you invest in LinkedIn Sales Navigator?</div>
+    <div class="honest">
+      <div class="honest-top">
+        <div class="honest-icon">🔍</div>
+        <div>
+          <div class="honest-heading">Probably not yet — and here's why</div>
+          <div class="honest-sub">₹11,000–₹12,000/month · Advanced outreach tool</div>
+        </div>
+      </div>
+      <div class="honest-body">
+        LinkedIn Sales Navigator is a powerful tool — advanced filters, saved lead lists, InMail credits, CRM integration. But at ₹11,000–₹12,000 per month, it's a significant additional cost, and it's not necessary to get strong results in the first 90 days.<br><br>
+        The strategy outlined here is built entirely on LinkedIn's free features plus a modest ad budget. The recommendation is to validate first — build the audience, land the first few clients, and prove the model works. Once leads are coming in consistently and the subscription pays for itself within one or two closed deals, then it becomes a straightforward investment. Start with the free trial if you're eligible, and measure whether it genuinely adds enough pipeline to justify the ongoing cost.
+      </div>
+      <div class="honest-cols">
+        <div class="hcol hcol-no">
+          <div class="hcol-label">Hold off if…</div>
+          <ul>
+            <li>Still building the first client base</li>
+            <li>Organic content strategy isn't proven yet</li>
+            <li>Free LinkedIn tools haven't been fully used</li>
+            <li>Monthly revenue doesn't absorb the cost easily</li>
+          </ul>
+        </div>
+        <div class="hcol hcol-yes">
+          <div class="hcol-label">Worth it when…</div>
+          <ul>
+            <li>Leads are coming in consistently</li>
+            <li>Actively scaling B2B outreach volume</li>
+            <li>Need niche filters free search can't provide</li>
+            <li>1–2 closed clients cover the monthly cost</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PLAN PICKER -->
+  <div class="section">
+    <div class="section-label">Choose your plan</div>
+    <div class="section-title">Which budget works for you?</div>
+    <div class="section-desc">Both plans use the same 90-day strategy. The difference is how fast leads come in and how much the algorithm has to work with each month.</div>
+
+    <div class="plan-toggle">
+      <button class="plan-btn active" onclick="setPlan('starter',this)">₹6,000 – ₹7,000 / month</button>
+      <button class="plan-btn" onclick="setPlan('growth',this)">₹15,000 – ₹20,000 / month</button>
+    </div>
+
+    <!-- STARTER PLAN -->
+    <div id="plan-starter" class="plan-card plan-starter-card">
+      <div class="plan-card-top">
+        <div>
+          <div class="plan-name">Starter Plan</div>
+          <div class="plan-price">₹6,000 – ₹7,000 <span>/month ad spend</span></div>
+        </div>
+        <div class="plan-tag plan-tag-amber">Budget-conscious</div>
+      </div>
+      <div class="plan-note">⚠️ Month 1 runs one basic test ad (₹2,500–₹3,000) alongside organic — just enough to collect early data on what audience and copy responds. From Month 2 the remaining budget scales what worked.</div>
+      <div class="plan-stats">
+        <div class="pstat"><div class="pstat-val">₹2.5–3K</div><div class="pstat-lbl">Month 1 ad test budget</div></div>
+        <div class="pstat"><div class="pstat-val">1–3</div><div class="pstat-lbl">Early leads in Month 1</div></div>
+        <div class="pstat"><div class="pstat-val">3–5</div><div class="pstat-lbl">Leads/month from Month 2</div></div>
+        <div class="pstat"><div class="pstat-val">Low risk</div><div class="pstat-lbl">Good entry point to test</div></div>
+      </div>
+      <div class="plan-items">
+        <div class="pi pi-yes">Month 1 — organic content + one basic Lead Gen ad running Tue–Thu only</div>
+        <div class="pi pi-yes">Goal in Month 1 is data, not volume — find what copy and audience works</div>
+        <div class="pi pi-yes">Month 2 — full budget behind what Month 1 proved</div>
+        <div class="pi pi-yes">All deliverables included</div>
+        <div class="pi pi-no">Limited daily impressions — algorithm optimizes slowly at this spend</div>
+        <div class="pi pi-no">Fewer leads to convert until Month 2 budget increases</div>
+      </div>
+    </div>
+
+    <!-- GROWTH PLAN -->
+    <div id="plan-growth" class="plan-card plan-growth-card" style="display:none">
+      <div class="plan-card-top">
+        <div>
+          <div class="plan-name">Growth Plan</div>
+          <div class="plan-price">₹15,000 – ₹20,000 <span>/month ad spend</span></div>
+        </div>
+        <div class="plan-tag plan-tag-blue">Recommended</div>
+      </div>
+      <div class="plan-note" style="background:var(--green-light);border-color:var(--green-border);color:#166534;">✅ Month 1 runs a proper test campaign (₹5,000–₹6,000) to collect real data fast. From Month 2, the full budget runs Lead Gen + Retargeting simultaneously — enough for the algorithm to optimize within 2 weeks.</div>
+      <div class="plan-stats">
+        <div class="pstat"><div class="pstat-val">₹5–6K</div><div class="pstat-lbl">Month 1 test campaign</div></div>
+        <div class="pstat"><div class="pstat-val">3–6</div><div class="pstat-lbl">Early leads in Month 1</div></div>
+        <div class="pstat"><div class="pstat-val">8–15</div><div class="pstat-lbl">Leads/month from Month 2</div></div>
+        <div class="pstat"><div class="pstat-val">2–3</div><div class="pstat-lbl">Booked calls/month by Month 2</div></div>
+      </div>
+      <div class="plan-items">
+        <div class="pi pi-yes">Month 1 — organic content + proper test campaign to collect data quickly</div>
+        <div class="pi pi-yes">Month 2 — Lead Gen + Retargeting running together, algorithm fully optimizing</div>
+        <div class="pi pi-yes">Enough impressions daily for meaningful results within 2 weeks</div>
+        <div class="pi pi-yes">Realistic pipeline to close 2+ clients by Month 3</div>
+        <div class="pi pi-yes">All deliverables included</div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <div class="section" style="margin-bottom:0">
+    <div class="section-label">Working together</div>
+    <div class="section-title">What this looks like week to week</div>
+    <div class="section-desc">Designed to need as little of your time as possible. You review and approve — everything else is handled.</div>
+    <div class="work-grid">
+      <div class="work-item"><div class="work-label">Your time per week</div><div class="work-val">~30 minutes for content review and approval</div></div>
+      <div class="work-item"><div class="work-label">Content sent for approval</div><div class="work-val">5–7 days before each publish date</div></div>
+      <div class="work-item"><div class="work-label">Ad reports</div><div class="work-val">Every Monday — clear numbers, plain language</div></div>
+      <div class="work-item"><div class="work-label">Communication</div><div class="work-val">WhatsApp or email — your preference</div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-l">LinkedIn 90-Day Growth Proposal · <strong>Adarsha.S</strong></div>
+  <a href="https://wa.me/919113243402" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Chat on WhatsApp
+  </a>
+</div>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="progress-bar" style="position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#2563eb,#0d9488);z-index:1000;transition:width 0.1s linear;"></div>
+
+<!-- SCROLL TO TOP BUTTON -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#0d9488);color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(37,99,235,0.35);transition:opacity 0.2s,transform 0.2s;" title="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+<script>
+  function setPlan(plan, el) {
+    document.querySelectorAll('.plan-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('plan-starter').style.display = plan === 'starter' ? 'block' : 'none';
+    document.getElementById('plan-growth').style.display  = plan === 'growth'  ? 'block' : 'none';
+  }
+
+  const bar = document.getElementById('progress-bar');
+  const btn = document.getElementById('scroll-top');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = pct + '%';
+    btn.style.display = scrollTop > 300 ? 'flex' : 'none';
+  });
+</script>
+
+</body>
+</html>
